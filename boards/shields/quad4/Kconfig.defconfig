@@ -1,0 +1,6 @@
+if SHIELD_QUAD4
+
+config ZMK_KEYBOARD_NAME
+    default "quad4"
+
+endif
