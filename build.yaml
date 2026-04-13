@@ -20,6 +20,5 @@
 include:
   - board: nice_nano
     shield: quad4
-  - board: nice_nano
-    shield: corne_right
+ 
 ---
