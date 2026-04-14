@@ -1,1 +1,2 @@
-source "boards/shields/quad4/Kconfig.shield"
+config SHIELD_QUAD4
+    def_bool $(shields_list_contains,quad4)
