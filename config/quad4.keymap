@@ -10,5 +10,10 @@
                 &kp DOWN    &kp RIGHT
             >;
         };
+        service_layer {
+            bindings = <
+                &none       &bt BT_CLR
+                &none       &none
     };
+};
 };
