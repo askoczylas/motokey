@@ -4,16 +4,19 @@
 / {
     keymap {
         compatible = "zmk,keymap";
+
         default_layer {
             bindings = <
                 &kp LEFT    &kp UP
-                &kp DOWN    &kp RIGHT
+                &kp DOWN      &kp RIGHT
             >;
         };
+
         service_layer {
             bindings = <
-                &none       &bt BT_CLR
+                &bt BT_CLR  &none
                 &none       &none
+            >;
+        };
     };
-};
 };
