@@ -3,6 +3,14 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+
+/* Konfiguracja czasu przytrzymania */
+    behaviors {
+        lt {
+            tapping-term-ms = <1000>; // Czas w milisekundach (zmień na więcej, jeśli 500 to wciąż za mało)
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
