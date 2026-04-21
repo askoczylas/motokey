@@ -6,8 +6,14 @@
 
 /* Konfiguracja czasu przytrzymania */
     behaviors {
-        lt {
-            tapping-term-ms = <1000>; // Czas w milisekundach (zmień na więcej, jeśli 500 to wciąż za mało)
+        // Tworzymy nową nazwę dla Twojego klawisza, np. "up_layer"
+        up_layer: up_layer {
+            compatible = "zmk,behavior-hold-tap";
+            label = "UP_LAYER";
+            #binding-cells = <2>;
+            tapping-term-ms = <600>;    // Bardzo długie przytrzymanie (600ms)
+            flavor = "tap-preferred";   // Priorytet dla kliknięcia (strzałki)
+            bindings = <&mo>, <&kp>;
         };
     };
 
