@@ -3,17 +3,15 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
-
-/* Konfiguracja czasu przytrzymania */
     behaviors {
-        // Tworzymy nową nazwę dla Twojego klawisza, np. "up_layer"
+        // Definicja zachowania: przytrzymanie = warstwa, kliknięcie = klawisz
         up_layer: up_layer {
             compatible = "zmk,behavior-hold-tap";
             label = "UP_LAYER";
             #binding-cells = <2>;
-            tapping-term-ms = <600>;    // Bardzo długie przytrzymanie (600ms)
-            flavor = "tap-preferred";   // Priorytet dla kliknięcia (strzałki)
-            bindings = <&mo>, <&kp>;
+            tapping-term-ms = <600>;    // Czas przytrzymania
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;    // Kolejność: hold (warstwa), tap (klawisz)
         };
     };
 
@@ -22,15 +20,16 @@
 
         default_layer {
             bindings = <
-                &kp LEFT    &kp UP
-                &kp DOWN      &kp RIGHT
+                &kp LEFT    &up_layer 1 UP   /* ZMIANA: Tu używamy nowego zachowania */
+                &kp DOWN    &kp RIGHT
             >;
         };
 
         service_layer {
             bindings = <
-                &none  &none
-                &bt BT_CLR      &none
+                /* Kiedy trzymasz UP, naciśnij klawisz LEFT (lewa góra), aby wyczyścić BT */
+                &bt BT_CLR  &none            
+                &none       &none
             >;
         };
     };
