@@ -4,14 +4,24 @@
 
 / {
     behaviors {
-        // Definicja zachowania: przytrzymanie = warstwa, kliknięcie = klawisz
-        up_layer: up_layer {
+        /* Definicja zachowania: trzymanie = pierwszy klawisz, kliknięcie = drugi klawisz */
+        ht_kp: hold_tap_kp {
             compatible = "zmk,behavior-hold-tap";
-            label = "UP_LAYER";
+            label = "HOLD_TAP_KP";
             #binding-cells = <2>;
-            tapping-term-ms = <600>;    // Czas przytrzymania
+            tapping-term-ms = <400>;    // Czas przytrzymania (0.4 sekundy)
             flavor = "tap-preferred";
-            bindings = <&mo>, <&kp>;    // Kolejność: hold (warstwa), tap (klawisz)
+            bindings = <&kp>, <&kp>;
+        };
+
+        /* Zachowanie dla wejścia w warstwę serwisową (zostawiamy, żebyś mógł czyścić BT) */
+        layer_up: layer_up {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LAYER_UP";
+            #binding-cells = <2>;
+            tapping-term-ms = <1000>;   // Dłuższe przytrzymanie (1 sekunda), by wejść w ustawienia
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
         };
     };
 
@@ -20,15 +30,17 @@
 
         default_layer {
             bindings = <
-                &kp LEFT    &up_layer 1 UP   /* ZMIANA: Tu używamy nowego zachowania */
-                &kp DOWN    &kp RIGHT
+                /* Lewy Górny: Klik = LEFT, Przytrzymanie = Nic (możesz tu coś dodać) */
+                &kp LEFT         &ht_kp RIGHT UP
+                
+                /* Lewy Dolny: Klik = DOWN, Przytrzymanie = LEFT */
+                &ht_kp LEFT DOWN  &kp RIGHT
             >;
         };
 
         service_layer {
             bindings = <
-                /* Kiedy trzymasz UP, naciśnij klawisz LEFT (lewa góra), aby wyczyścić BT */
-                &bt BT_CLR  &none            
+                &bt BT_CLR  &none
                 &none       &none
             >;
         };
