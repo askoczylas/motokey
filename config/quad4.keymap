@@ -34,7 +34,7 @@
                 &kp GT         &ht_kp RIGHT UP
                 
                 /* Lewy Dolny: Klik = DOWN, Przytrzymanie = LEFT */
-                &ht_kp LEFT DOWN  &kp GT
+                &ht_kp LEFT DOWN  &kp A
             >;
         };
 
