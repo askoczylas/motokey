@@ -31,7 +31,7 @@
         default_layer {
             bindings = <
                 /* Lewy Górny: Klik = LEFT, Przytrzymanie = Nic (możesz tu coś dodać) */
-                &kp LEFT         &ht_kp RIGHT UP
+                &kp GT         &ht_kp RIGHT UP
                 
                 /* Lewy Dolny: Klik = DOWN, Przytrzymanie = LEFT */
                 &ht_kp LEFT DOWN  &kp GT
